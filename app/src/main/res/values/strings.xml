@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">MyToDoApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_note">notatki</string>
+    <string name="title_activity_statistic">statystyki</string>
+
+    <string name="title_activity_info">o aplikacji:</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="large_text">
+        "MyToDo - my mobile todo list\n\n"
+
+        "Mobilna aplikacja stworzona na potrzeby pracy inżynierskiej. Aplikacja ma na celu lepsze"
+        "organizowanie czasu użytkownika, po przez planowanie zadań, które ma wykonać, oraz notowanie\n\n"
+        "Aplikacja składa się z 3 modułów:\n"
+        "- zadania\n"
+        "- notatki\n"
+        "- statystyki\n\n\n\n"
+
+
+        "Stworzone przez: Sebastian Sekutwski\n"
+        "Wyższa Szkoła Ekonomii i Innowacji w Lublinie\n"
+        "Wydział Transportu i Informatyki\n"
+        "2016"
+
+
+    </string>
+</resources>
