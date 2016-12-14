@@ -24,9 +24,8 @@ public class StatisticActivity extends AppCompatActivity
 
 
 
-//    private  float[] yData = {};
-    private String[] xData = {"Ilość dodanych zadań", "Ilość aktualnyh zadań", "Ilość usuniętych zadań",
-            "Ilość dodanych notatek", "Ilość usuniętych notatek", " "};
+//    private String[] xData = {"Ilość dodanych zadań", "Ilość aktualnyh zadań", "Ilość usuniętych zadań",
+//            "Ilość dodanych notatek", "Ilość usuniętych notatek", " "};
     PieChart pieChart;
 
 
@@ -35,9 +34,6 @@ public class StatisticActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
-
-
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -58,7 +54,7 @@ public class StatisticActivity extends AppCompatActivity
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(25);
         pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("dupa");
+        pieChart.setCenterText(" ");
         pieChart.setCenterTextSize(15);
         pieChart.setDrawEntryLabels(true);
 
@@ -99,13 +95,10 @@ public class StatisticActivity extends AppCompatActivity
         yEntries.add(new PieEntry(S4));
         yEntries.add(new PieEntry(S5));
 
-//        for(int i=0; i<yData.length; i++){
-//            yEntries.add(new PieEntry(yData[i], i));
-//        }
 
-        for(int i=0; i<xData.length; i++){
-            xEntries.add(xData[i]);
-        }
+//        for(int i=0; i<xData.length; i++){
+//            xEntries.add(xData[i]);
+//        }
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "statystyki");
         pieDataSet.setSliceSpace(2);

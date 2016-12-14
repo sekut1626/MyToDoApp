@@ -55,7 +55,7 @@ public class CursorDb extends CursorAdapter {
             txtTitle.setPaintFlags(txtTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
 
-        TextView txtData = (TextView) view.findViewById(R.id.dataKurwa);
+        TextView txtData = (TextView) view.findViewById(R.id.dataSet);
         String date = cursor.getString(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_TASK_DATE));
         txtData.setText(date);
 

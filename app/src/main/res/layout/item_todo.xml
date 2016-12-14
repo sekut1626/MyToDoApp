@@ -34,13 +34,13 @@
             android:id="@+id/spinner2"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_alignBottom="@+id/dataKurwa"
-            android:layout_toRightOf="@+id/dataKurwa"
-            android:layout_toEndOf="@+id/dataKurwa"
+            android:layout_alignBottom="@+id/dataSet"
+            android:layout_toRightOf="@+id/dataSet"
+            android:layout_toEndOf="@+id/dataSet"
             android:layout_below="@+id/task_title" />
 
         <TextView
-            android:id="@+id/dataKurwa"
+            android:id="@+id/dataSet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Termin:"
