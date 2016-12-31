@@ -88,16 +88,16 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_task) {
 
         } else if (id == R.id.nav_note) {
-            Intent iinent= new Intent(MainActivity.this,NoteActivity.class);
+            Intent iinent = new Intent(MainActivity.this, NoteActivity.class);
             startActivity(iinent);
         } else if (id == R.id.nav_stat) {
-            Intent iinent= new Intent(MainActivity.this,StatisticActivity.class);
+            Intent iinent = new Intent(MainActivity.this, StatisticActivity.class);
             startActivity(iinent);
         } else if (id == R.id.nav_info) {
-            Intent iinent= new Intent(MainActivity.this,InfoActivity.class);
+            Intent iinent = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(iinent);
         } else if (id == R.id.nav_exit) {
-                finish();
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -143,20 +143,17 @@ public class MainActivity extends AppCompatActivity
     private void initControls() {
 
         checkBoxStar = (CheckBox) findViewById(R.id.checkBox1);
-        checkBoxStrike = (CheckBox) findViewById(R.id.checkbox);
+        checkBoxStrike = (CheckBox) findViewById(R.id.checkbox2);
         mTaskListView = (ListView) findViewById(R.id.list_todo);
         taskNameEditText = (EditText) findViewById(R.id.taketask);
         spinner = (Spinner) findViewById(R.id.spinner);
         txt = (TextView) findViewById(R.id.textViewDate);
-
     }
 
     private void initDB() {
 
         dbHelper = new TaskDbHelper(this);
     }
-
-
 
     public void addData(View view) {
 
@@ -174,17 +171,17 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
-    public void updateStrikeTrough(View view){
+    public void updateStrikeTrough(View view) {
 
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
 
-        if(stateOfStrikeTrough == 1){
-            stateOfStrikeTrough = 0;
-        }else{
+        CheckBox checkBox = (CheckBox) parent.findViewById(R.id.checkbox2);
+
+        if (checkBox.isChecked())
             stateOfStrikeTrough = 1;
-        }
+        else
+            stateOfStrikeTrough = 0;
 
         String taskName = String.valueOf(taskTextView.getText());
         dbHelper.updateTask(taskName, stateOfStrikeTrough);
@@ -196,8 +193,15 @@ public class MainActivity extends AppCompatActivity
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
 
+        CheckBox checkBox = (CheckBox) parent.findViewById(R.id.checkbox2);
+
+        if (checkBox.isChecked())
+            stateOfStrikeTrough = 1;
+        else
+            stateOfStrikeTrough = 0;
+
         String taskName = String.valueOf(taskTextView.getText());
-        dbHelper.deleteTask(taskName);
+        dbHelper.deleteTask(taskName, stateOfStrikeTrough);
         updateListView();
     }
 

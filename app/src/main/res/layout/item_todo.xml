@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="Termin:"
             android:gravity="center"
-            android:layout_alignBottom="@+id/checkbox"
+            android:layout_alignBottom="@+id/checkbox2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/task_title" />
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/checkbox_on_background"
-            android:id="@+id/checkbox"
+            android:id="@+id/checkbox2"
             android:onClick="updateStrikeTrough"
             android:layout_below="@+id/task_title"
             android:layout_toLeftOf="@+id/imageButton5"

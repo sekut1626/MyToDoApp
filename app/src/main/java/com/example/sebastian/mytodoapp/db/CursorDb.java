@@ -59,7 +59,7 @@ public class CursorDb extends CursorAdapter {
         String date = cursor.getString(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_TASK_DATE));
         txtData.setText(date);
 
-        CheckBox checkBoxstrike = (CheckBox) view.findViewById(R.id.checkbox);
+        CheckBox checkBoxstrike = (CheckBox) view.findViewById(R.id.checkbox2);
         int isDon = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_TASK_IS_STRIKETROUGH));
         switch (isDon) {
             case 0:

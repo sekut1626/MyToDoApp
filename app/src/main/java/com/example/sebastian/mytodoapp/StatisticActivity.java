@@ -1,6 +1,7 @@
 package com.example.sebastian.mytodoapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.sebastian.mytodoapp.db.TaskContract;
+import com.example.sebastian.mytodoapp.db.TaskDbHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -20,14 +23,11 @@ import com.github.mikephil.charting.data.PieEntry;
 import java.util.ArrayList;
 
 public class StatisticActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
-//    private String[] xData = {"Ilość dodanych zadań", "Ilość aktualnyh zadań", "Ilość usuniętych zadań",
+    //    private String[] xData = {"Ilość dodanych zadań", "Ilość aktualnyh zadań", "Ilość usuniętych zadań",
 //            "Ilość dodanych notatek", "Ilość usuniętych notatek", " "};
     PieChart pieChart;
-
 
 
     @Override
@@ -35,6 +35,7 @@ public class StatisticActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
 
+        TaskDbHelper db = new TaskDbHelper(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,59 +59,47 @@ public class StatisticActivity extends AppCompatActivity
         pieChart.setCenterTextSize(15);
         pieChart.setDrawEntryLabels(true);
 
-        addDataSet();
+        addDataSet(db.getStatisiticValues());
 
     }
 
+    private void addDataSet(Cursor cursor) {
 
-    private void addDataSet() {
+        int all = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ALL_TASK));
+        int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
+        int finished = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK));
+        int actives = all - deleted;
+
         TextView sta1 = (TextView) findViewById(R.id.stat1);
-        String s1 = sta1.getText().toString();
-        int S1 = Integer.parseInt(s1);
+        sta1.setText(String.valueOf(all));
 
         TextView sta2 = (TextView) findViewById(R.id.stat2);
-        String s2 = sta2.getText().toString();
-        int S2 = Integer.parseInt(s2);
+        sta2.setText(String.valueOf(deleted));
 
         TextView sta3 = (TextView) findViewById(R.id.stat3);
-        String s3 = sta3.getText().toString();
-        int S3 = Integer.parseInt(s3);
+        sta3.setText(String.valueOf(finished));
 
         TextView sta4 = (TextView) findViewById(R.id.stat4);
-        String s4 = sta4.getText().toString();
-        int S4 = Integer.parseInt(s4);
-
-        TextView sta5 = (TextView) findViewById(R.id.stat5);
-        String s5 = sta5.getText().toString();
-        int S5 = Integer.parseInt(s5);
-
+        sta4.setText(String.valueOf(actives));
 
         ArrayList<PieEntry> yEntries = new ArrayList<>();
-        ArrayList<String> xEntries = new ArrayList<>();
 
-
-        yEntries.add(new PieEntry(S1));
-        yEntries.add(new PieEntry(S2));
-        yEntries.add(new PieEntry(S3));
-        yEntries.add(new PieEntry(S4));
-        yEntries.add(new PieEntry(S5));
-
-
-//        for(int i=0; i<xData.length; i++){
-//            xEntries.add(xData[i]);
-//        }
+        yEntries.add(new PieEntry(all));
+        yEntries.add(new PieEntry(deleted));
+        yEntries.add(new PieEntry(actives));
+        yEntries.add(new PieEntry(finished));
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "statystyki");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
 
-        ArrayList<Integer> colors = new ArrayList<>();;
+        ArrayList<Integer> colors = new ArrayList<>();
+
         colors.add(Color.BLUE);
         colors.add(Color.CYAN);
         colors.add(Color.GRAY);
         colors.add(Color.GREEN);
-        colors.add(Color.MAGENTA);
 
         pieDataSet.setColors(colors);
 
@@ -138,16 +127,16 @@ public class StatisticActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_task) {
-            Intent iinent= new Intent(StatisticActivity.this,MainActivity.class);
+            Intent iinent = new Intent(StatisticActivity.this, MainActivity.class);
             startActivity(iinent);
         } else if (id == R.id.nav_note) {
-            Intent iinent= new Intent(StatisticActivity.this,NoteActivity.class);
+            Intent iinent = new Intent(StatisticActivity.this, NoteActivity.class);
             startActivity(iinent);
 
         } else if (id == R.id.nav_stat) {
 
         } else if (id == R.id.nav_info) {
-            Intent iinent= new Intent(StatisticActivity.this,InfoActivity.class);
+            Intent iinent = new Intent(StatisticActivity.this, InfoActivity.class);
             startActivity(iinent);
         } else if (id == R.id.nav_exit) {
             finish();
