@@ -71,6 +71,7 @@ public class StatisticActivity extends AppCompatActivity
         int all = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ALL_TASK));
         int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
         int finished = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK));
+        int noteAll = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
         int actives = all - deleted;
 
         TextView sta1 = (TextView) findViewById(R.id.stat1);
@@ -85,12 +86,16 @@ public class StatisticActivity extends AppCompatActivity
         TextView sta4 = (TextView) findViewById(R.id.stat4);
         sta4.setText(String.valueOf(actives));
 
+        TextView sta5 = (TextView) findViewById(R.id.stat5);
+        sta5.setText(String.valueOf(noteAll));
+
         ArrayList<PieEntry> yEntries = new ArrayList<>();
 
         yEntries.add(new PieEntry(all));
         yEntries.add(new PieEntry(deleted));
         yEntries.add(new PieEntry(actives));
         yEntries.add(new PieEntry(finished));
+        yEntries.add(new PieEntry(noteAll));
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "statystyki");
         pieDataSet.setSliceSpace(2);
@@ -103,6 +108,7 @@ public class StatisticActivity extends AppCompatActivity
         colors.add(Color.CYAN);
         colors.add(Color.GRAY);
         colors.add(Color.GREEN);
+        colors.add(Color.DKGRAY);
 
         pieDataSet.setColors(colors);
 

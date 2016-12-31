@@ -32,9 +32,9 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 //                TaskContract.TaskEntry.COL_STAT_TASK + " INTEGER, " +
                 TaskContract.TaskEntry.COL_STAT_ALL_TASK + " INTEGER, " +
                 TaskContract.TaskEntry.COL_STAT_DELETED_TASK + " INTEGER, " +
-                TaskContract.TaskEntry.COL_STAT_FINISHED_TASK + " INTEGER" +");";
-//                TaskContract.TaskEntry.COL_STAT_NOTE + " INTEGER, " +
-//                TaskContract.TaskEntry.COL_STAT_ADDED_NOTE + " INTEGER " +");";
+                TaskContract.TaskEntry.COL_STAT_FINISHED_TASK + " INTEGER, " +
+                TaskContract.TaskEntry.COL_STAT_ADDED_NOTE + " INTEGER, " +
+                TaskContract.TaskEntry.COL_STAT_DELETED_NOTE + " INTEGER " +");";
 
         String createTableNotes = "CREATE TABLE " + TaskContract.TaskEntry.TABLE_NOTES + " ( " +
                 TaskContract.TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -51,6 +51,8 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         values.put(TaskContract.TaskEntry.COL_STAT_ALL_TASK, 0);
         values.put(TaskContract.TaskEntry.COL_STAT_DELETED_TASK, 0);
         values.put(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK, 0);
+        values.put(TaskContract.TaskEntry.COL_STAT_DELETED_NOTE, 0);
+        values.put(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE, 0);
         db.insert(TaskContract.TaskEntry.TABLE_STATISTIC, null, values);
 
     }
@@ -103,7 +105,14 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         values.put(TaskContract.TaskEntry.COL_NOTE_CONTENT, content);
 
         db.insert(TaskContract.TaskEntry.TABLE_NOTES, null, values);
-        db.close();;
+
+        String incremenSQlQuery = "UPDATE " + TaskContract.TaskEntry.TABLE_STATISTIC
+                + " SET " + TaskContract.TaskEntry.COL_STAT_ADDED_NOTE + "="
+                + TaskContract.TaskEntry.COL_STAT_ADDED_NOTE + " + 1 WHERE "
+                + TaskContract.TaskEntry._ID +" = 1";
+
+        db.execSQL(incremenSQlQuery);
+        db.close();
 
     }
 
@@ -190,6 +199,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
                         + TaskContract.TaskEntry.COL_STAT_DELETED_TASK
                         + " , "+ TaskContract.TaskEntry.COL_STAT_ALL_TASK
                         + " , "+ TaskContract.TaskEntry.COL_STAT_FINISHED_TASK
+                        + " , "+ TaskContract.TaskEntry.COL_STAT_ADDED_NOTE
                         + " from "
                         + TaskContract.TaskEntry.TABLE_STATISTIC, null);
 

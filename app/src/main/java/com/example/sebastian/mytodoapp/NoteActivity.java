@@ -9,6 +9,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.example.sebastian.mytodoapp.db.TaskDbHelper;
 
 /**
  * Created by sebastian on 09.10.16.
@@ -16,12 +24,19 @@ import android.view.MenuItem;
 public class NoteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private TaskDbHelper dbHelperN;
+    private EditText titleNoteText;
+    private EditText contenetNoteText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        initNoteControls();
+        iniDB();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -43,6 +58,13 @@ public class NoteActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+    private void initNoteControls() {
+
+        titleNoteText = (EditText) findViewById(R.id.title_note);
+        contenetNoteText = (EditText) findViewById(R.id.cont_note);
+    }
+
 
 
 
@@ -72,4 +94,27 @@ public class NoteActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void iniDB() {
+
+        dbHelperN = new TaskDbHelper(this);
+    }
+
+    public void addNoteT(View view) {
+
+        String noteTitleText = String.valueOf(titleNoteText.getText());
+        String noteContentText = String.valueOf(contenetNoteText.getText());
+
+
+
+        dbHelperN.addNote(noteTitleText, noteContentText);
+
+        titleNoteText.getText().clear();
+        contenetNoteText.getText().clear();
+
+
+
+    }
+
+
 }

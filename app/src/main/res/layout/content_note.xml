@@ -23,20 +23,22 @@
     </RelativeLayout>
 
     <EditText
-        android:text="Tytół notatki"
+        android:hint="tytuł notatki"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:id="@+id/title_note"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="74dp" />
 
     <EditText
-        android:text="treść notatki"
+        android:hint="treść notatki"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="110dp"
         android:id="@+id/cont_note"
         android:layout_below="@+id/title_note"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_marginTop="19dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -49,6 +51,7 @@
         app:srcCompat="@android:drawable/ic_menu_add"
         android:id="@+id/AddNoteButton"
         android:elevation="0dp"
+        android:onClick="addNoteT"
         android:layout_below="@+id/cont_note"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
