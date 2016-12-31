@@ -22,6 +22,9 @@ import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
 
+/**
+ * Created by sebastian on 16.12.16.
+ */
 public class StatisticActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

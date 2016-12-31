@@ -167,20 +167,20 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor getStrikeTrouh(){
-
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery
-                ("SELECT " + TaskContract.TaskEntry._ID +  " as _id, "
-                        + TaskContract.TaskEntry.COL_TASK_IS_STRIKETROUGH
-                        + " from "
-                        + TaskContract.TaskEntry.TABLE_TASKS, null);
-
-        if (cursor != null) {
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
+//    public Cursor getStrikeTrouh(){
+//
+//        SQLiteDatabase db = getReadableDatabase();
+//        Cursor cursor = db.rawQuery
+//                ("SELECT " + TaskContract.TaskEntry._ID +  " as _id, "
+//                        + TaskContract.TaskEntry.COL_TASK_IS_STRIKETROUGH
+//                        + " from "
+//                        + TaskContract.TaskEntry.TABLE_TASKS, null);
+//
+//        if (cursor != null) {
+//            cursor.moveToFirst();
+//        }
+//        return cursor;
+//    }
 
     public Cursor getStatisiticValues() {
 

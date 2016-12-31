@@ -29,6 +29,9 @@ import com.example.sebastian.mytodoapp.other.DatePickerFragment;
 
 import java.util.ArrayList;
 
+/**
+ * Created by sebastian on 12.06.16.
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

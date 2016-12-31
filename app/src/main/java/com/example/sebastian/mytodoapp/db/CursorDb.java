@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Sekut on 2016-10-22.
+ * Created by sebastian on 16.10.16.
  */
 public class CursorDb extends CursorAdapter {
 
