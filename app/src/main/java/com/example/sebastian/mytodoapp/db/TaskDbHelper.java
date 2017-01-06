@@ -29,7 +29,6 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 
         String createTableStatistic = "CREATE TABLE " + TaskContract.TaskEntry.TABLE_STATISTIC + " ( " +
                 TaskContract.TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                TaskContract.TaskEntry.COL_STAT_TASK + " INTEGER, " +
                 TaskContract.TaskEntry.COL_STAT_ALL_TASK + " INTEGER, " +
                 TaskContract.TaskEntry.COL_STAT_DELETED_TASK + " INTEGER, " +
                 TaskContract.TaskEntry.COL_STAT_FINISHED_TASK + " INTEGER, " +
@@ -40,7 +39,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
                 TaskContract.TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TaskContract.TaskEntry.COL_NOTE_TITLE + " TEXT NOT NULL, " +
                 TaskContract.TaskEntry.COL_NOTE_CONTENT + " TEXT NOT NULL, " +
-                TaskContract.TaskEntry.COL_NOTE_IMG + " TEXT NOT NULL " +");";
+                TaskContract.TaskEntry.COL_NOTE_IMG + " BLOB " +");";
 
         db.execSQL(createTableTasks);
         db.execSQL(createTableStatistic);

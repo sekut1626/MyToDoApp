@@ -1,6 +1,7 @@
 package com.example.sebastian.mytodoapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
+import com.example.sebastian.mytodoapp.db.CursorNote;
 import com.example.sebastian.mytodoapp.db.TaskDbHelper;
 
 /**
@@ -27,6 +30,7 @@ public class NoteActivity extends AppCompatActivity
     private TaskDbHelper dbHelperN;
     private EditText titleNoteText;
     private EditText contenetNoteText;
+    private ListView nTaskListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class NoteActivity extends AppCompatActivity
 
         initNoteControls();
         iniDB();
+        updateListView();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -63,6 +68,7 @@ public class NoteActivity extends AppCompatActivity
 
         titleNoteText = (EditText) findViewById(R.id.title_note);
         contenetNoteText = (EditText) findViewById(R.id.cont_note);
+        nTaskListView = (ListView) findViewById(R.id.list_note);
     }
 
 
@@ -111,9 +117,14 @@ public class NoteActivity extends AppCompatActivity
 
         titleNoteText.getText().clear();
         contenetNoteText.getText().clear();
+    }
 
+    private void updateListView() {
 
+        Cursor cursor = dbHelperN.getDataForListView();
+        CursorNote cursorAdapter = new CursorNote(this, cursor, 0);
 
+        nTaskListView.setAdapter(cursorAdapter);
     }
 
 
