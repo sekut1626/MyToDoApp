@@ -144,17 +144,20 @@ public class StatisticActivity extends AppCompatActivity
         if (id == R.id.nav_task) {
             Intent iinent = new Intent(StatisticActivity.this, MainActivity.class);
             startActivity(iinent);
+            finish();
         } else if (id == R.id.nav_note) {
             Intent iinent = new Intent(StatisticActivity.this, NoteActivity.class);
             startActivity(iinent);
-
+            finish();
         } else if (id == R.id.nav_stat) {
 
         } else if (id == R.id.nav_info) {
             Intent iinent = new Intent(StatisticActivity.this, InfoActivity.class);
             startActivity(iinent);
+            finish();
         } else if (id == R.id.nav_exit) {
             finish();
+            System.exit(0);
 
         }
 

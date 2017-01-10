@@ -15,18 +15,19 @@
         "MyToDo - my mobile todo list\n\n"
 
         "Mobilna aplikacja stworzona na potrzeby pracy inżynierskiej. Aplikacja ma na celu lepsze"
-        "organizowanie czasu użytkownika, po przez planowanie zadań, które ma wykonać, oraz notowanie\n\n"
+        "organizowanie czasu użytkownika, po przez planowanie zadań, które ma wykonać, oraz zapisywanie krótkich notatek\n\n"
         "Aplikacja składa się z 3 modułów:\n"
-        "- zadania\n"
-        "- notatki\n"
-        "- statystyki\n\n\n\n"
-
-
-        "Stworzone przez: Sebastian Sekutwski\n"
+        " - zadania: dodawanie krótkich zadań wraz z przypisaniem paramterów takich jak: oznaczenie, data wykonania i nadanie priorytetu, oraz operacje na dodanych zadaniach takie jak: wykreslanie, odkreślanie, edycja oraz usuwanie zadań\n"
+        " - notatki: dodawnie krótkich notatek, oraz ich usuwanie\n"
+        " - statystyki: wizualizacja zebranych statystyk z pracy użytkownika w aplikacji\n"
+        " - informacje: krótka informacja o apkikacji\n\n"
+        "Stworzone przez: \n"
+        " Sebastian Sekutwski\n"
+        " Nr albumu: 24269\n"
+    </string>
+    <string name="large_text_continue">
         "Wyższa Szkoła Ekonomii i Innowacji w Lublinie\n"
         "Wydział Transportu i Informatyki\n"
         "2016"
-
-
     </string>
 </resources>

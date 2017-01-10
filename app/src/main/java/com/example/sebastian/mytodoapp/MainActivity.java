@@ -93,14 +93,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_note) {
             Intent iinent = new Intent(MainActivity.this, NoteActivity.class);
             startActivity(iinent);
+            finish();
         } else if (id == R.id.nav_stat) {
             Intent iinent = new Intent(MainActivity.this, StatisticActivity.class);
             startActivity(iinent);
+            finish();
         } else if (id == R.id.nav_info) {
             Intent iinent = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(iinent);
+            finish();
         } else if (id == R.id.nav_exit) {
             finish();
+            System.exit(0);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
