@@ -72,22 +72,26 @@ public class StatisticActivity extends AppCompatActivity
         int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
         int finished = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK));
         int noteAll = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
+        int noteDell = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
         int actives = all - deleted;
 
         TextView sta1 = (TextView) findViewById(R.id.stat1);
         sta1.setText(String.valueOf(all));
 
         TextView sta2 = (TextView) findViewById(R.id.stat2);
-        sta2.setText(String.valueOf(deleted));
+        sta2.setText(String.valueOf(actives));
 
         TextView sta3 = (TextView) findViewById(R.id.stat3);
         sta3.setText(String.valueOf(finished));
 
         TextView sta4 = (TextView) findViewById(R.id.stat4);
-        sta4.setText(String.valueOf(actives));
+        sta4.setText(String.valueOf(deleted));
 
         TextView sta5 = (TextView) findViewById(R.id.stat5);
         sta5.setText(String.valueOf(noteAll));
+
+        TextView sta6 = (TextView) findViewById(R.id.stat6);
+        sta6.setText(String.valueOf(noteDell));
 
         ArrayList<PieEntry> yEntries = new ArrayList<>();
 
@@ -96,6 +100,7 @@ public class StatisticActivity extends AppCompatActivity
         yEntries.add(new PieEntry(actives));
         yEntries.add(new PieEntry(finished));
         yEntries.add(new PieEntry(noteAll));
+        yEntries.add(new PieEntry(noteDell));
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "statystyki");
         pieDataSet.setSliceSpace(2);
@@ -105,10 +110,11 @@ public class StatisticActivity extends AppCompatActivity
         ArrayList<Integer> colors = new ArrayList<>();
 
         colors.add(Color.BLUE);
-        colors.add(Color.CYAN);
+        colors.add(Color.MAGENTA);
         colors.add(Color.GRAY);
         colors.add(Color.GREEN);
-        colors.add(Color.DKGRAY);
+        colors.add(Color.RED);
+        colors.add(Color.YELLOW);
 
         pieDataSet.setColors(colors);
 

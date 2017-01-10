@@ -208,6 +208,7 @@ public class MainActivity extends AppCompatActivity
         updateListView();
     }
 
+
     private void updateListView() {
 
         Cursor cursor = dbHelper.getDataForListView();

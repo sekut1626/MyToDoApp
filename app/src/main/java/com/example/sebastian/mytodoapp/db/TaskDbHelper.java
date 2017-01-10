@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 
 public class TaskDbHelper extends SQLiteOpenHelper {
@@ -97,7 +98,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
     }
 
     public void addNote(String titlenote, String content){
-        SQLiteDatabase db =getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(TaskContract.TaskEntry.COL_NOTE_TITLE, titlenote);
@@ -147,6 +148,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
     }
 
 
+
     public void deleteTask(String task, int isStrikeTrough) {
 
         SQLiteDatabase db = getWritableDatabase();
@@ -190,6 +192,22 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 //        return cursor;
 //    }
 
+    public Cursor getNoteValues() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery
+                ("SELECT " + TaskContract.TaskEntry._ID +  " as _id, "
+                        + TaskContract.TaskEntry.COL_NOTE_TITLE
+                        + " , "+ TaskContract.TaskEntry.COL_NOTE_CONTENT
+                        + " from "
+                        + TaskContract.TaskEntry.TABLE_NOTES, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public Cursor getStatisiticValues() {
 
         SQLiteDatabase db = getReadableDatabase();
@@ -225,5 +243,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+
 
 }

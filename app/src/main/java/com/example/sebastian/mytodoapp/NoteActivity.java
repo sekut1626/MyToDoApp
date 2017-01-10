@@ -11,11 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.sebastian.mytodoapp.db.CursorNote;
@@ -42,7 +44,6 @@ public class NoteActivity extends AppCompatActivity
         initNoteControls();
         iniDB();
         updateListView();
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -111,20 +112,26 @@ public class NoteActivity extends AppCompatActivity
         String noteTitleText = String.valueOf(titleNoteText.getText());
         String noteContentText = String.valueOf(contenetNoteText.getText());
 
-
-
         dbHelperN.addNote(noteTitleText, noteContentText);
 
         titleNoteText.getText().clear();
         contenetNoteText.getText().clear();
+        updateListView();
     }
 
     private void updateListView() {
 
-        Cursor cursor = dbHelperN.getDataForListView();
+        Cursor cursor = dbHelperN.getNoteValues();
         CursorNote cursorAdapter = new CursorNote(this, cursor, 0);
 
         nTaskListView.setAdapter(cursorAdapter);
+    }
+
+    public void displayAlert(View view){
+
+//        TextView text = (TextView) view.findViewById(R.id.out_cont);
+//        Toast.makeText(this, text.getText(), Toast.LENGTH_SHORT).show();
+
     }
 
 
