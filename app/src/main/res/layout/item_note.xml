@@ -12,12 +12,6 @@
     tools:context="com.example.sebastian.mytodoapp.MainActivity">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sss"
-            android:id="@+id/out_cont"/>
-
         <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -32,19 +26,51 @@
             android:id="@+id/out_note_title"
             android:onClick="displayAlert"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/out_cont"
-            android:layout_toEndOf="@+id/out_cont"
-            android:layout_marginLeft="69dp"
-            android:layout_marginStart="69dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="normal|bold" />
 
-        <Button
-            android:text="Button"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/out_note_title"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4"
+            android:layout_alignBottom="@+id/btn_delete_note" />
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            app:srcCompat="@android:drawable/btn_dialog"
+            android:id="@+id/btn_delete_note"
+            android:onClick="delNote"
+            android:background="@android:color/white"
+            android:layout_below="@+id/task_title"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:onClick="showNote"
-            android:id="@+id/button_bb" />
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4"
+            android:layout_alignBottom="@+id/imageView4"
+            android:id="@+id/out_cont" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@android:drawable/ic_menu_report_image"
+            android:id="@+id/imageView4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

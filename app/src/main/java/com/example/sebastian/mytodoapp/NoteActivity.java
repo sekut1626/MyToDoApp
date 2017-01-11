@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 
 import com.example.sebastian.mytodoapp.db.CursorNote;
@@ -29,6 +30,7 @@ import com.example.sebastian.mytodoapp.db.TaskDbHelper;
 public class NoteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int CAMERA_REQUEST = 0;
     private TaskDbHelper dbHelperN;
     private EditText titleNoteText;
     private EditText contenetNoteText;
@@ -43,7 +45,7 @@ public class NoteActivity extends AppCompatActivity
 
         initNoteControls();
         iniDB();
-        updateListView();
+        updateListViewN();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,10 +121,21 @@ public class NoteActivity extends AppCompatActivity
 
         titleNoteText.getText().clear();
         contenetNoteText.getText().clear();
-        updateListView();
+        updateListViewN();
     }
 
-    private void updateListView() {
+    public void delNote(View view) {
+
+        View parentN = (View) view.getParent();
+        TextView noteTextView = (TextView) parentN.findViewById(R.id.out_note_title);
+
+        String noteName = String.valueOf(noteTextView.getText());
+        dbHelperN.deleteNote(noteName);
+        Toast.makeText(this, "usunąłeś notatkę", Toast.LENGTH_SHORT).show();
+        updateListViewN();
+    }
+
+    private void updateListViewN() {
 
         Cursor cursor = dbHelperN.getNoteValues();
         CursorNote cursorAdapter = new CursorNote(this, cursor, 0);
@@ -136,6 +149,11 @@ public class NoteActivity extends AppCompatActivity
 //        Toast.makeText(this, text.getText(), Toast.LENGTH_SHORT).show();
 
     }
+
+    public void getPhoto(View view) {
+    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+    startActivityForResult(cameraIntent, CAMERA_REQUEST);
+}
 
 
 }

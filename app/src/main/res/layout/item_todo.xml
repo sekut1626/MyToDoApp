@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/btn_dialog"
-            android:id="@+id/imageButton5"
+            android:id="@+id/btn_delete_note"
             android:onClick="delTask"
             android:background="@android:color/white"
             android:layout_below="@+id/task_title"
@@ -69,8 +69,8 @@
             android:id="@+id/checkbox2"
             android:onClick="updateStrikeTrough"
             android:layout_below="@+id/task_title"
-            android:layout_toLeftOf="@+id/imageButton5"
-            android:layout_toStartOf="@+id/imageButton5" />
+            android:layout_toLeftOf="@+id/btn_delete_note"
+            android:layout_toStartOf="@+id/btn_delete_note" />
 
 
 </RelativeLayout>
