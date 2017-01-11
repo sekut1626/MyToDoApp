@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyToDoApp</string>
+    <string name="app_name">zadania</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -28,6 +28,6 @@
     <string name="large_text_continue">
         "Wyższa Szkoła Ekonomii i Innowacji w Lublinie\n"
         "Wydział Transportu i Informatyki\n"
-        "2016"
+        <!--"2016"-->
     </string>
 </resources>
