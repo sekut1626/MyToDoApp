@@ -21,11 +21,10 @@ public class TaskContract {
         public static final String COL_TASK_IS_STRIKETROUGH = "striketrough";
 
         public static final String TABLE_STATISTIC = "statistic";
-        public static final String COL_STAT_TASK = "stask";
         public static final String COL_STAT_ALL_TASK = "addedt";
         public static final String COL_STAT_DELETED_TASK = "deleted";
         public static final String COL_STAT_FINISHED_TASK = "finished";
-        public static final String COL_STAT_DELETED_NOTE= "snote";
+        public static final String COL_STAT_DELETED_NOTE = "deletenote";
         public static final String COL_STAT_ADDED_NOTE = "addedn";
 
         public static final String TABLE_NOTES = "notes";

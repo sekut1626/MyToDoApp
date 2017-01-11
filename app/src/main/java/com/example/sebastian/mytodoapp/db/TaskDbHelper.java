@@ -155,6 +155,12 @@ public class TaskDbHelper extends SQLiteOpenHelper {
                 TaskContract.TaskEntry.COL_NOTE_TITLE + " = ?",
                 new String[]{noteName});
 
+//        String incrementNoteSQlQuery = "UPDATE " + TaskContract.TaskEntry.TABLE_STATISTIC
+//                + " SET " + TaskContract.TaskEntry.COL_STAT_DELETED_NOTE + "="
+//                + TaskContract.TaskEntry.COL_STAT_DELETED_NOTE + " + 1 WHERE "
+//                + TaskContract.TaskEntry._ID +" = 1";
+//
+//        db.execSQL(incrementNoteSQlQuery);
         db.close();
         }
 
@@ -168,6 +174,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         db.delete(TaskContract.TaskEntry.TABLE_TASKS,
                 TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
                 new String[]{task});
+
 
 
         String incrementSQlQuery = "UPDATE " + TaskContract.TaskEntry.TABLE_STATISTIC

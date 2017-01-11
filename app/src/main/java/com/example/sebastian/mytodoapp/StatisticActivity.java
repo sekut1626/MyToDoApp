@@ -28,8 +28,6 @@ import java.util.ArrayList;
 public class StatisticActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //    private String[] xData = {"Ilość dodanych zadań", "Ilość aktualnyh zadań", "Ilość usuniętych zadań",
-//            "Ilość dodanych notatek", "Ilość usuniętych notatek", " "};
     PieChart pieChart;
 
 
@@ -72,7 +70,7 @@ public class StatisticActivity extends AppCompatActivity
         int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
         int finished = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK));
         int noteAll = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
-        int noteDell = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
+//        int noteD = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
         int actives = all - deleted;
 
         TextView sta1 = (TextView) findViewById(R.id.stat1);
@@ -90,8 +88,8 @@ public class StatisticActivity extends AppCompatActivity
         TextView sta5 = (TextView) findViewById(R.id.stat5);
         sta5.setText(String.valueOf(noteAll));
 
-        TextView sta6 = (TextView) findViewById(R.id.stat6);
-        sta6.setText(String.valueOf(noteDell));
+//        TextView sta6 = (TextView) findViewById(R.id.stat6);
+//        sta6.setText(String.valueOf(noteD));
 
         ArrayList<PieEntry> yEntries = new ArrayList<>();
 
@@ -100,7 +98,7 @@ public class StatisticActivity extends AppCompatActivity
         yEntries.add(new PieEntry(actives));
         yEntries.add(new PieEntry(finished));
         yEntries.add(new PieEntry(noteAll));
-        yEntries.add(new PieEntry(noteDell));
+//        yEntries.add(new PieEntry(noteD));
 
         PieDataSet pieDataSet = new PieDataSet(yEntries, "statystyki");
         pieDataSet.setSliceSpace(2);
@@ -114,7 +112,7 @@ public class StatisticActivity extends AppCompatActivity
         colors.add(Color.GRAY);
         colors.add(Color.GREEN);
         colors.add(Color.RED);
-        colors.add(Color.YELLOW);
+//        colors.add(Color.YELLOW);
 
         pieDataSet.setColors(colors);
 
@@ -158,7 +156,6 @@ public class StatisticActivity extends AppCompatActivity
         } else if (id == R.id.nav_exit) {
             finish();
             System.exit(0);
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
