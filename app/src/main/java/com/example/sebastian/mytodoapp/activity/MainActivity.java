@@ -1,4 +1,4 @@
-package com.example.sebastian.mytodoapp;
+package com.example.sebastian.mytodoapp.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,8 +22,9 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.example.sebastian.mytodoapp.db.CursorDb;
-import com.example.sebastian.mytodoapp.db.TaskDbHelper;
+import com.example.sebastian.mytodoapp.R;
+import com.example.sebastian.mytodoapp.db.CursorTask;
+import com.example.sebastian.mytodoapp.db.DbHelper;
 import com.example.sebastian.mytodoapp.other.CustomAdapterSpinner;
 import com.example.sebastian.mytodoapp.other.DatePickerFragment;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView imageView;
-    private TaskDbHelper dbHelper;
+    private DbHelper dbHelper;
     private ListView mTaskListView;
     private ArrayAdapter<String> mAdapter;
     private EditText taskNameEditText;
@@ -54,9 +55,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         initControls();
-        initDB();
+        initDb();
         updateListView();
-        listapriorytetow();
+        priorityList();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,7 +84,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -112,9 +112,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-//    ==========================================
-
-    public void listapriorytetow() {
+    public void priorityList() {
 
         ArrayList<Integer> list = new ArrayList<>();
         list.add(R.drawable.jeden);
@@ -157,9 +155,9 @@ public class MainActivity extends AppCompatActivity
         txt = (TextView) findViewById(R.id.textViewDate);
     }
 
-    private void initDB() {
+    private void initDb() {
 
-        dbHelper = new TaskDbHelper(this);
+        dbHelper = new DbHelper(this);
     }
 
     public void addData(View view) {
@@ -175,24 +173,6 @@ public class MainActivity extends AppCompatActivity
         taskNameEditText.getText().clear();
         updateListView();
 
-    }
-
-
-    public void updateStrikeTrough(View view) {
-
-        View parent = (View) view.getParent();
-        TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
-
-        CheckBox checkBox = (CheckBox) parent.findViewById(R.id.checkbox2);
-
-        if (checkBox.isChecked())
-            stateOfStrikeTrough = 1;
-        else
-            stateOfStrikeTrough = 0;
-
-        String taskName = String.valueOf(taskTextView.getText());
-        dbHelper.updateTask(taskName, stateOfStrikeTrough);
-        updateListView();
     }
 
     public void delTask(View view) {
@@ -212,15 +192,30 @@ public class MainActivity extends AppCompatActivity
         updateListView();
     }
 
+    public void updateStrikeTrough(View view) {
+
+        View parent = (View) view.getParent();
+        TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
+
+        CheckBox checkBox = (CheckBox) parent.findViewById(R.id.checkbox2);
+
+        if (checkBox.isChecked())
+            stateOfStrikeTrough = 1;
+        else
+            stateOfStrikeTrough = 0;
+
+        String taskName = String.valueOf(taskTextView.getText());
+        dbHelper.updateTask(taskName, stateOfStrikeTrough);
+        updateListView();
+    }
 
     private void updateListView() {
 
         Cursor cursor = dbHelper.getDataForListView();
-        CursorDb cursorAdapter = new CursorDb(this, cursor, 0);
+        CursorTask cursorAdapter = new CursorTask(this, cursor, 0);
 
         mTaskListView.setAdapter(cursorAdapter);
     }
-
 
     public void setCheckBoxStar(View view) {
 

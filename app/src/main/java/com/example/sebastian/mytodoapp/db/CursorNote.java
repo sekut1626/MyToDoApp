@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +15,7 @@ import com.example.sebastian.mytodoapp.R;
  * Created by sebastian on 31.12.16.
  */
 
-public class CursorNote extends CursorAdapter implements View.OnClickListener {
+public class CursorNote extends CursorAdapter {
 
     private LayoutInflater layoutInflaterNote;
     private Context context;
@@ -41,21 +39,13 @@ public class CursorNote extends CursorAdapter implements View.OnClickListener {
     public void bindView(View view, Context context, Cursor cursor) {
 
         TextView NTitle = (TextView) view.findViewById(R.id.out_note_title);
-        String getOutTitleNote = cursor.getString(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_NOTE_TITLE));
+        String getOutTitleNote = cursor.getString(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_NOTE_TITLE));
         NTitle.setText(getOutTitleNote);
 
         TextView nCont = (TextView) view.findViewById(R.id.out_cont);
-        String getContNote = cursor.getString(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_NOTE_CONTENT));
+        String getContNote = cursor.getString(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_NOTE_CONTENT));
         nCont.setText(String.valueOf(getContNote));
 
-
-
-
     }
 
-    @Override
-    public void onClick(View view) {
-
-        Toast.makeText(context, "test", Toast.LENGTH_SHORT).show();
-    }
 }

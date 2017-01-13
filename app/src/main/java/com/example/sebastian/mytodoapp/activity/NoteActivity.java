@@ -1,4 +1,4 @@
-package com.example.sebastian.mytodoapp;
+package com.example.sebastian.mytodoapp.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,18 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 
+import com.example.sebastian.mytodoapp.R;
 import com.example.sebastian.mytodoapp.db.CursorNote;
-import com.example.sebastian.mytodoapp.db.TaskDbHelper;
+import com.example.sebastian.mytodoapp.db.DbHelper;
 
 /**
  * Created by sebastian on 09.10.16.
@@ -31,7 +28,7 @@ public class NoteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int CAMERA_REQUEST = 0;
-    private TaskDbHelper dbHelperN;
+    private DbHelper dbHelperN;
     private EditText titleNoteText;
     private EditText contenetNoteText;
     private ListView nTaskListView;
@@ -74,11 +71,6 @@ public class NoteActivity extends AppCompatActivity
         nTaskListView = (ListView) findViewById(R.id.list_note);
     }
 
-
-
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -109,10 +101,10 @@ public class NoteActivity extends AppCompatActivity
 
     private void iniDB() {
 
-        dbHelperN = new TaskDbHelper(this);
+        dbHelperN = new DbHelper(this);
     }
 
-    public void addNoteT(View view) {
+    public void addNote(View view) {
 
         String noteTitleText = String.valueOf(titleNoteText.getText());
         String noteContentText = String.valueOf(contenetNoteText.getText());
@@ -141,13 +133,6 @@ public class NoteActivity extends AppCompatActivity
         CursorNote cursorAdapter = new CursorNote(this, cursor, 0);
 
         nTaskListView.setAdapter(cursorAdapter);
-    }
-
-    public void displayAlert(View view){
-
-//        TextView text = (TextView) view.findViewById(R.id.out_cont);
-//        Toast.makeText(this, text.getText(), Toast.LENGTH_SHORT).show();
-
     }
 
     public void getPhoto(View view) {

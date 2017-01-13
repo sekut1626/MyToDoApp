@@ -6,7 +6,7 @@ package com.example.sebastian.mytodoapp.db;
 
 import android.provider.BaseColumns;
 
-public class TaskContract {
+public class Contract {
 
     public static final String DB_NAME = "database";
     public static final int DB_VERSION = 1;

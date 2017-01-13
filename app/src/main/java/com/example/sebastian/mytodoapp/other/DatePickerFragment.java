@@ -39,5 +39,4 @@ public class DatePickerFragment extends DialogFragment
 
     }
 
-
     }

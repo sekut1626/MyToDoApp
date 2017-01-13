@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.sebastian.mytodoapp.MainActivity;
+import com.example.sebastian.mytodoapp.activity.MainActivity;
 import com.example.sebastian.mytodoapp.R;
 
 public class SplashScreen extends Activity {

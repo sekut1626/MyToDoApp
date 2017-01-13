@@ -1,4 +1,4 @@
-package com.example.sebastian.mytodoapp;
+package com.example.sebastian.mytodoapp.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,8 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.sebastian.mytodoapp.db.TaskContract;
-import com.example.sebastian.mytodoapp.db.TaskDbHelper;
+import com.example.sebastian.mytodoapp.R;
+import com.example.sebastian.mytodoapp.db.Contract;
+import com.example.sebastian.mytodoapp.db.DbHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -36,7 +37,7 @@ public class StatisticActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
 
-        TaskDbHelper db = new TaskDbHelper(this);
+        DbHelper db = new DbHelper(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,11 +67,11 @@ public class StatisticActivity extends AppCompatActivity
 
     private void addDataSet(Cursor cursor) {
 
-        int all = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ALL_TASK));
-        int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
-        int finished = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_FINISHED_TASK));
-        int noteAll = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_ADDED_NOTE));
-//        int noteD = cursor.getInt(cursor.getColumnIndexOrThrow(TaskContract.TaskEntry.COL_STAT_DELETED_TASK));
+        int all = cursor.getInt(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_STAT_ALL_TASK));
+        int deleted = cursor.getInt(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_STAT_DELETED_TASK));
+        int finished = cursor.getInt(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_STAT_FINISHED_TASK));
+        int noteAll = cursor.getInt(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_STAT_ADDED_NOTE));
+//        int noteD = cursor.getInt(cursor.getColumnIndexOrThrow(Contract.TaskEntry.COL_STAT_DELETED_TASK));
         int actives = all - deleted;
 
         TextView sta1 = (TextView) findViewById(R.id.stat1);

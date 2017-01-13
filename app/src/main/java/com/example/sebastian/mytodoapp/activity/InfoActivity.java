@@ -1,4 +1,4 @@
-package com.example.sebastian.mytodoapp;
+package com.example.sebastian.mytodoapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.example.sebastian.mytodoapp.R;
 
 /**
  * Created by sebastian on 12.12.16.
