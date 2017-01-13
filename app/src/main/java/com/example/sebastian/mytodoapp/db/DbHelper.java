@@ -89,9 +89,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL(incrementSQlQuery);
 
-
-
-
         db.close();
     }
 
