@@ -65,7 +65,7 @@ public class DbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addTaskWithStar(String task, int star, int prioriti, String date, int strikeTrough ) {
+    public void addTask(String task, int star, int prioriti, String date, int strikeTrough ) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -187,7 +187,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor getNoteValues() {
+    public Cursor getNoteValues()
+    {
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery

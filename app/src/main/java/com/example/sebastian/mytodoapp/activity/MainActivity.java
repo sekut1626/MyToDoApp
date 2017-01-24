@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         String tektstdaty = String.valueOf(txt.getText());
         int stateOfStrikeTrough = this.stateOfStrikeTrough;
 
-        dbHelper.addTaskWithStar(task, stateOfStar, stateOfPriority, tektstdaty, stateOfStrikeTrough);
+        dbHelper.addTask(task, stateOfStar, stateOfPriority, tektstdaty, stateOfStrikeTrough);
 
         taskNameEditText.getText().clear();
         updateListView();
